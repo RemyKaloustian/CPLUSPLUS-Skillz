@@ -6,3 +6,6 @@
 
 //the # converts into a string
 #define to_str(x) #x
+
+//## concatenates two arguments
+#define c(param) cout<<param<<"\n"
