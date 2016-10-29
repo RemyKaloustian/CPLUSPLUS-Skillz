@@ -3,19 +3,39 @@
 
 #include "defines.h"
 
-#define IN_STATIC
+#define REINTERPRET
 
 using std::cout;
 using std::string;
 
 //THIS PROGRAM SHOWS THE CASTING POSSIBILITIES
 
+//Classes for dynamic and static examples
 class Base { public:virtual void dodo(){ showMessage("In dodo() mah man"); } };
 class Derived :public Base { public : int a = 6; };
 
+class Nova 
+{ 
+    public:
+        string name = "Richard Rider"; 
+        string gravimetric_blaster = "Gravimetric Blaster";
+        int charisma_count = 550000;
+           void RocketPunch(){ showMessage("ROCKET PUNCH ! *swoosh*"); } 
+};
+class Deadpool 
+{ 
+    public: 
+        string name = "Wade Wilson"; 
+        string katana_rama = "KATANA RAMA ! ";
+        string hyper_combo = "AND IT'S A HOMERUN !";
+        void TriggerHappy(){ showMessage("WOHOW ! *click* BANG BANGBANGBANG BANGBANGBANGBANG !"); }
+};
+
+
+
 int main()
 {
-    #pragma region DYNAMIC
+#pragma region DYNAMIC
 
     #ifdef IN_DYNAMIC
     Base * from_derived = new Derived();
@@ -72,5 +92,26 @@ int main()
     //This will work. cast_result has been cast to Base, it still can execute dodo().
     cast_result->dodo();
     #endif
+#pragma endregion
+
+
+#pragma region REINTERPRET
+#ifdef REINTERPRET
+
+    //The reinterpret_cast makes a binary copy, whatever the two classes involved are
+    Nova* the_nova = new Nova();
+    //the_deadpool is a binary copy of the_nova
+    Deadpool* the_deadpool = reinterpret_cast<Deadpool*>(the_nova);
+    showMessage(the_deadpool->name); //shows Richard Rider
+    //This works because Deadpool second field and Nova second field are both a string
+    showMessage(the_deadpool->katana_rama); //shows gravimetric blaster
+    //This throws an exception because the cast tried to put Nova.charisma_count in Deadpool.hyper_combo
+    //It did not work because these fields are not the same type
+    showMessage(the_deadpool->hyper_combo);
+
+
+
+
+#endif
 #pragma endregion
 }
