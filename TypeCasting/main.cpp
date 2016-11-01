@@ -105,6 +105,11 @@ int main()
     showMessage(the_deadpool->name); //shows Richard Rider
     //This works because Deadpool second field and Nova second field are both a string
     showMessage(the_deadpool->katana_rama); //shows gravimetric blaster
+    //Methods are not modified, this will run the actual code in TriggerHappy()
+    the_deadpool->TriggerHappy();
+
+
+
     //This throws an exception because the cast tried to put Nova.charisma_count in Deadpool.hyper_combo
     //It did not work because these fields are not the same type
     showMessage(the_deadpool->hyper_combo);
