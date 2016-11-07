@@ -37,7 +37,6 @@ void o(Head &&head, Tail&&... tail) {
 template<typename Input>
 void i(Input & the_variable)
 {
-    o("In i");
     cin >> the_variable;
 }
 
@@ -54,4 +53,3 @@ void ov(vector<T> the_vector, string message="", bool has_index = true, string s
     }
     o("\n");
 }
-
