@@ -1,0 +1,7 @@
+*.tlog
+CopyConstructor/CopyConstructor.sdf
+*.sdf
+PrivateInheritance/PrivateInheritance.vcxproj.filters
+*.vcxproj
+PrivateInheritance/PrivateInheritance.sln
+*.idb
